@@ -8,7 +8,7 @@ namespace Lab_Alg_1
         delegate void WorkingMethod(int[] vector);
         WorkingMethod Wd; 
         int maxValue = 50000;
-        int maxN = 100000;
+        int maxN = 50000;
         public static void Main(string[] args)
         {
             new Program().Working();
@@ -18,7 +18,8 @@ namespace Lab_Alg_1
         public void Working()
         {
             Wd = new SumFunc().Start;
-            string[] results = new string[maxN];
+            //string[] results = new string[maxN];
+            double[] results  = new double[maxN];
 
             var watсh = new Stopwatch();
             for (int n = 1; n <= maxN; n++)
@@ -35,11 +36,13 @@ namespace Lab_Alg_1
                     sumWorks += s;
                     //Console.Write($"   {s} : {sumWorks} ;");
                 }
-                results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
+                //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
+                results[n - 1] = (double)(sumWorks) / 5.0;
 
                 Console.WriteLine($"{n} : {(double)(sumWorks)/5.0}");
             }
-            File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", results);
+            FileProcessing fileProcessing = new FileProcessing();
+            File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
         }
 
         public int[] CreateVector(int n)
