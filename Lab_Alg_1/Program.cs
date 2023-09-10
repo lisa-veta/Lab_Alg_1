@@ -35,11 +35,11 @@ namespace Lab_Alg_1
                     sumWorks += s;
                     //Console.Write($"   {s} : {sumWorks} ;");
                 }
-                results[n - 1] = $"{n};{(double)(sumWorks)}";
+                results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
 
-                Console.WriteLine($"{n} : {(double)(sumWorks)}");
+                Console.WriteLine($"{n} : {(double)(sumWorks)/5.0}");
             }
-            File.WriteAllLines("C:\\Users\\user\\Desktop\\result.csv", results);
+            File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", results);
         }
 
         public int[] CreateVector(int n)
