@@ -4,20 +4,17 @@ using System.Diagnostics;
 namespace Lab_Alg_1
 {
     public class Program
-    {
-        delegate void WorkingMethod(int[] vector);
-        WorkingMethod Wd; 
-        int maxValue = 50000;
-        int maxN = 50000;
+    { 
+        static int maxValue = 3;
+        static int maxN = 2;
         public static void Main(string[] args)
         {
-            new Program().Working();
-            //Working();
+            Working();
         }
 
-        public void Working()
+        public static void Working()
         {
-            Wd = new SumFunc().Start;
+            var task = new Task1();
             //string[] results = new string[maxN];
             double[] results  = new double[maxN];
 
@@ -30,7 +27,7 @@ namespace Lab_Alg_1
                 for (int count = 0; count < 5; count++)
                 {
                     watсh.Start();
-                    Wd(CreateVector(n));
+                    task.DoConstFunc(CreateVector(n, maxValue));
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.Milliseconds;
                     sumWorks += s;
@@ -45,11 +42,11 @@ namespace Lab_Alg_1
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
         }
 
-        public int[] CreateVector(int n)
+        public static int[] CreateVector(int n, int maxValue)
         {
             int[] array = new int[n];
             var random = new Random();
-            for(int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
                 array[i] = random.Next(0, maxValue);
             }
