@@ -14,7 +14,7 @@ namespace Lab_Alg_1
 
         public static void Working()
         {
-            var task = new Task1();
+            var task = new Task3();
             //string[] results = new string[maxN];
             double[] results  = new double[maxN];
 
