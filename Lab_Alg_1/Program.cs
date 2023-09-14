@@ -5,11 +5,11 @@ namespace Lab_Alg_1
 {
     public class Program
     { 
-        static int maxValue = 3;
-        static int maxN = 10000;
+        static int maxValue = 5000;
+        static int maxN = 2000;
         public static void Main(string[] args)
         {
-            WorkingWithoutTime();
+            Working();
         }
 
         public static void Working()
@@ -30,14 +30,15 @@ namespace Lab_Alg_1
                     Random random = new Random();
                     task.DoConstFunc(CreateVector(n, maxValue));
                     watсh.Stop();
-                    double s = (double)watсh.Elapsed.Milliseconds;
+                    double s = (double)watсh.Elapsed.TotalSeconds;
+                    Console.WriteLine($"n = {n} : {s.ToString("F8")}");
                     sumWorks += s;
                     //Console.Write($"   {s} : {sumWorks} ;");
                 }
                 //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
                 results[n - 1] = (double)(sumWorks) / 5.0;
 
-                Console.WriteLine($"{n} : {(double)(sumWorks) / 5.0}");
+                //Console.WriteLine($"{n} : {(double)(sumWorks) / 5.0}");
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
