@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,6 +57,54 @@ namespace Lab_Alg_1
                     }
                 }
             }
+        }
+
+        public void DoQuickSort(int[] vector, int startInd, int endInd)
+        {
+            if(startInd >= endInd)
+            {
+                return;
+            }
+            int pivot = Partition(vector, startInd, endInd);
+            DoQuickSort(vector, startInd, pivot - 1);
+            DoQuickSort(vector, pivot + 1, endInd);
+        }
+
+        public int Partition(int[] vector, int startInd, int endInd)
+        {
+            int value = vector[endInd];
+            int position = startInd;
+            for(int i = startInd; i < endInd - 1; i++)
+            {
+                if (vector[i] <= value)
+                { 
+                    Swap(vector, i, position);
+                    position++;
+                }
+
+            }
+            vector[endInd] = vector[position];
+            vector[position] = value;
+            return position;
+        }
+
+        public void Swap(int[] vector, int ind1, int ind2)
+        {
+            int box = vector[ind1];
+            vector[ind1] = vector[ind2];
+            vector[ind2] = box;
+        }
+
+        public int DoSimplePow(int x, int n)//n>=0
+        {
+            int func = 1;
+            int k = 0;
+            while(k < n)
+            {
+                func *= x;
+                k++;
+            }
+            return func;
         }
     }
 }
