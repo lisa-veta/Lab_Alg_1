@@ -57,5 +57,59 @@ namespace Lab_Alg_1
                 }
             }
         }
+
+        public int DoQuickPow(int x, int n)
+        {
+            int steps = 0;
+            int c = x;
+            int k = n;
+            int f;
+            if (k % 2 == 1)
+            {
+                f = c;
+            }
+            f = 1;
+
+            do
+            {
+                steps += 2;
+                k /= 2;
+                c *= c;
+                if (k % 2 == 1)
+                {
+                    steps += 1;
+                    f *= c;
+                }
+            }
+            while (k != 0);
+
+            return steps;
+        }
+
+        public int DoClassicQuickPow(int x, int n)
+        {
+            int steps = 0;
+            int c = x;
+            int k = n;
+            int f = 1;
+
+            while (k != 0)
+            {
+                if (k % 2 == 0)
+                {
+                    steps += 2;
+                    c *= c;
+                    k /= 2;
+                }
+                else
+                {
+                    steps += 2;
+                    f *= c;
+                    k -= 1;
+                }
+            }
+
+            return steps;
+        }
     }
 }
