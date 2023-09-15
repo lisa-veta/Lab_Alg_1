@@ -71,8 +71,37 @@ namespace Lab_Alg_1
                     break;
                 }
             }
-
+        }
+        
+        public void DoGnomeSort(int[] array)
+        {
+            int index = 1;
+            int nextIndex = index+1;
+            while (index < array.Length)
+            {
+                if (array[index - 1] < array[index])
+                {
+                    index = nextIndex;
+                    nextIndex++;
+                }
+                else
+                {
+                    SwapElements(array, index - 1, index);
+                    index--;
+                    if (index == 0)
+                    {
+                        index = nextIndex;
+                        nextIndex++;
+                    }
+                }
+            }
         }
 
+        public static void SwapElements(int[] array, int index, int nextIndex)
+        {
+            int temp = array[index];
+            array[index] = array[nextIndex];
+            array[nextIndex] = temp;
+        }
     }
 }
