@@ -18,7 +18,6 @@ namespace Lab_Alg_1
                 Swap(vector, 0, i);
                 MaxHeapify(vector, i, 0);
             }
-            Console.WriteLine();
         }
 
         public void MaxHeapify(int[] vector, int n, int ind)
