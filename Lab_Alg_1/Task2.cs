@@ -9,17 +9,15 @@ namespace Lab_Alg_1
 {
     public class Task2
     {
-        public int[,] DoMultiplicationMatrix(int n, int maxValue)
+        public int[,] DoMultiplicationMatrix(int[,] matrixA, int[,] matrixB)
         {
-            int[,] matrixA = CreateMatrix(n, maxValue);
-            int[,] matrixB = CreateMatrix(n, maxValue);
-            int[,] matrixResult = new int[n, n];
+            int[,] matrixResult = new int[matrixA.Length, matrixA.Length];
 
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < matrixA.Length; i++)
             {
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < matrixA.Length; j++)
                 {
-                    for (int k = 0; k < n; k++)
+                    for (int k = 0; k < matrixA.Length; k++)
                     {
                         matrixResult[i, j] += matrixA[i, k] * matrixB[k, j];
                     }
@@ -27,20 +25,6 @@ namespace Lab_Alg_1
             }
             
             return matrixResult;
-        }
-
-        public int[,] CreateMatrix(int n, int maxValue)
-        {
-            int[,] matrix = new int[n, n];
-            Random random = new Random();
-            for(int i = 0; i < n; i++)
-            {
-                for(int j = 0; j < n; j++)
-                {
-                    matrix[i, j] = random.Next(0, maxValue);
-                }
-            }
-            return matrix;
         }
     }
 }

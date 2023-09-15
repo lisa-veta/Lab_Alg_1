@@ -43,7 +43,7 @@ namespace Lab_Alg_1
             vector[b] = box;
         }
 
-        public void CocktailShakerSort(int[] vector)
+        public void DoCocktailShakerSort(int[] vector)
         {
             for (var i = 0; i < vector.Length / 2; i++)
             {

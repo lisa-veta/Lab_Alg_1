@@ -9,8 +9,6 @@ namespace Lab_Alg_1
 {
     public class Task1
     {
-        
-
         public void DoConstFunc(int[] vector)
         {
             int a = vector.Length;
@@ -69,7 +67,43 @@ namespace Lab_Alg_1
             }
         }
 
-        public  void TimSort(int[] array)
+        public void DoQuickSort(int[] vector, int startInd, int endInd)
+        {
+            if (startInd >= endInd)
+            {
+                return;
+            }
+            int pivot = Partition(vector, startInd, endInd);
+            DoQuickSort(vector, startInd, pivot - 1);
+            DoQuickSort(vector, pivot + 1, endInd);
+        }
+
+        public int Partition(int[] vector, int startInd, int endInd)
+        {
+            int pivot = vector[endInd];
+            int position = startInd;
+            for (int i = startInd; i < endInd - 1; i++)
+            {
+                if (vector[i] <= pivot)
+                {
+                    Swap(vector, i, position);
+                    position++;
+                }
+
+            }
+            vector[endInd] = vector[position];
+            vector[position] = pivot;
+            return position;
+        }
+
+        public void Swap(int[] vector, int ind1, int ind2)
+        {
+            int box = vector[ind1];
+            vector[ind1] = vector[ind2];
+            vector[ind2] = box;
+        }
+
+        public  void DoTimSort(int[] array)
         {
             int n = array.Length;
             int minRun = FindMinRunLenght(array.Length);
@@ -173,78 +207,43 @@ namespace Lab_Alg_1
                 j++;
             }
         }
-
-        public int Steps = 0;
-        public long RecursivePow(int x, int n)
-        {
-            if (n == 0)
-            {
-                Steps += 1;
-                return 1;
-            }
-            long func = RecursivePow(x, n / 2);
-            Steps += 1;
-            if (n%2==1)
-            {
-                func*=func * x;
-                Steps += 1;
-            }
-            if (n%2!=1)
-            {
-                func *= func;
-                Steps += 1;
-            }
-            return Steps;
-        }
-
-        public void DoQuickSort(int[] vector, int startInd, int endInd)
-        {
-            if(startInd >= endInd)
-            {
-                return;
-            }
-            int pivot = Partition(vector, startInd, endInd);
-            DoQuickSort(vector, startInd, pivot - 1);
-            DoQuickSort(vector, pivot + 1, endInd);
-        }
-
-        public int Partition(int[] vector, int startInd, int endInd)
-        {
-            int pivot = vector[endInd];
-            int position = startInd;
-            for(int i = startInd; i < endInd - 1; i++)
-            {
-                if (vector[i] <= pivot)
-                { 
-                    Swap(vector, i, position);
-                    position++;
-                }
-
-            }
-            vector[endInd] = vector[position];
-            vector[position] = pivot;
-            return position;
-        }
-
-        public void Swap(int[] vector, int ind1, int ind2)
-        {
-            int box = vector[ind1];
-            vector[ind1] = vector[ind2];
-            vector[ind2] = box;
-        }
-
         public int DoSimplePow(int x, int n)
         {
             int func = 1;
             int k = 0;
-            while(k < n)
+            int steps = 0;
+            while (k < n)
             {
                 func *= x;
                 k++;
+                steps += 2;
             }
-            return func;
+            return steps;
         }
-      
+
+        public long DoRecursivePow(int x, int n)
+        {
+            int steps = 0;
+            if (n == 0)
+            {
+                steps += 1;
+                return 1;
+            }
+            long func = DoRecursivePow(x, n / 2);
+            steps += 1;
+            if (n%2==1)
+            {
+                func*=func * x;
+                steps += 1;
+            }
+            if (n%2!=1)
+            {
+                func *= func;
+                steps += 1;
+            }
+            return steps;
+        }
+
         public int DoQuickPow(int x, int n)
         {
             int steps = 0;
