@@ -42,6 +42,16 @@ namespace Lab_Alg_1
             return vector[i] + x * DoMethodGornera(vector, i + 1);
         }
 
+        public void DoDirectMethod(int[] vector)
+        {
+            double result = 0;
+            double x = 1.5;
+            for(int i = 0; i < vector.Length; i++)
+            {
+                result += vector[i] * Math.Pow(x, i - 1);
+            }
+        }
+
         public void DoBubbleSort(int[] vector)
         {
             int temp;
@@ -73,11 +83,11 @@ namespace Lab_Alg_1
 
         public int Partition(int[] vector, int startInd, int endInd)
         {
-            int value = vector[endInd];
+            int pivot = vector[endInd];
             int position = startInd;
             for(int i = startInd; i < endInd - 1; i++)
             {
-                if (vector[i] <= value)
+                if (vector[i] <= pivot)
                 { 
                     Swap(vector, i, position);
                     position++;
@@ -85,7 +95,7 @@ namespace Lab_Alg_1
 
             }
             vector[endInd] = vector[position];
-            vector[position] = value;
+            vector[position] = pivot;
             return position;
         }
 
@@ -96,7 +106,7 @@ namespace Lab_Alg_1
             vector[ind2] = box;
         }
 
-        public int DoSimplePow(int x, int n)//n>=0
+        public int DoSimplePow(int x, int n)
         {
             int func = 1;
             int k = 0;

@@ -13,50 +13,9 @@ namespace Lab_Alg_1
         }
 
 
-        public static void ChooseAlg()
-        {
-            while (true)
-            {
-                Console.WriteLine("Выберите алгоритм:" +
-                "\n1)" +
-                "\n2)" +
-                "\n3)" +
-                "\n4)" +
-                "\n5)" +
-                "\n6)" +
-                "\n7)" +
-                "\n8.1)" +
-                "\n8.2)" +
-                "\n8.3)" +
-                "\n8.4)" +
-                "\n9)" +
-                "\n10)" +
-                "\n11)" +
-                "\n12)");
-                string choise = Console.ReadLine();
-                switch (choise)
-                {
-                    case "1":
-                        Working("DoConstFunc");
-                        break;
-                    case "2":
-                        SecondChoise();
-                        break;
-                    case "3":
-                        ThirdChoise();
-                        break;
-                    case "4":
-                        FourthChoise();
-                        break;
-                    default:
-                        Console.WriteLine("\nВыберите действие из предложенных\n");
-                        break;
-                }
-            }
-        }
-
         public static void Working(st)
         {
+
             var task = new Task1();
             //string[] results = new string[maxN];
             double[] results  = new double[maxN];
@@ -70,8 +29,12 @@ namespace Lab_Alg_1
                 for (int count = 0; count < 5; count++)
                 {
                     watсh.Start();
+
+                    task.DoConstFunc(CreateVector(n, maxValue));
+
                     Random random = new Random();
                     task.CocktailShakerSort(CreateVector(n, maxValue));
+
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
