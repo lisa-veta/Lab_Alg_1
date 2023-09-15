@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,16 @@ namespace Lab_Alg_1
             return vector[i] + x * DoMethodGornera(vector, i + 1);
         }
 
+        public void DoDirectMethod(int[] vector)
+        {
+            double result = 0;
+            double x = 1.5;
+            for(int i = 0; i < vector.Length; i++)
+            {
+                result += vector[i] * Math.Pow(x, i - 1);
+            }
+        }
+
         public void DoBubbleSort(int[] vector)
         {
             int temp;
@@ -57,6 +68,7 @@ namespace Lab_Alg_1
                 }
             }
         }
+
         public  void TimSort(int[] array)
         {
             int n = array.Length;
@@ -184,5 +196,108 @@ namespace Lab_Alg_1
             }
             return Steps;
         }
+
+        public void DoQuickSort(int[] vector, int startInd, int endInd)
+        {
+            if(startInd >= endInd)
+            {
+                return;
+            }
+            int pivot = Partition(vector, startInd, endInd);
+            DoQuickSort(vector, startInd, pivot - 1);
+            DoQuickSort(vector, pivot + 1, endInd);
+        }
+
+        public int Partition(int[] vector, int startInd, int endInd)
+        {
+            int pivot = vector[endInd];
+            int position = startInd;
+            for(int i = startInd; i < endInd - 1; i++)
+            {
+                if (vector[i] <= pivot)
+                { 
+                    Swap(vector, i, position);
+                    position++;
+                }
+
+            }
+            vector[endInd] = vector[position];
+            vector[position] = pivot;
+            return position;
+        }
+
+        public void Swap(int[] vector, int ind1, int ind2)
+        {
+            int box = vector[ind1];
+            vector[ind1] = vector[ind2];
+            vector[ind2] = box;
+        }
+
+        public int DoSimplePow(int x, int n)
+        {
+            int func = 1;
+            int k = 0;
+            while(k < n)
+            {
+                func *= x;
+                k++;
+            }
+            return func;
+        }
+      
+        public int DoQuickPow(int x, int n)
+        {
+            int steps = 0;
+            int c = x;
+            int k = n;
+            int f;
+            if (k % 2 == 1)
+            {
+                f = c;
+            }
+            f = 1;
+
+            do
+            {
+                k /= 2;
+                c *= c;
+                steps += 2;
+                if (k % 2 == 1)
+                {
+                    steps += 1;
+                    f *= c;
+                }
+            }
+            while (k != 0);
+
+            return steps;
+        }
+
+        public int DoClassicQuickPow(int x, int n)
+        {
+            int steps = 0;
+            int c = x;
+            int k = n;
+            int f = 1;
+
+            while (k != 0)
+            {
+                if (k % 2 == 0)
+                {
+                    steps += 2;
+                    c *= c;
+                    k /= 2;
+                }
+                else
+                {
+                    steps += 2;
+                    f *= c;
+                    k -= 1;
+                }
+            }
+
+            return steps;
+        }
+
     }
 }
