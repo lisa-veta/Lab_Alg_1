@@ -42,6 +42,16 @@ namespace Lab_Alg_1
             return vector[i] + x * DoMethodGornera(vector, i + 1);
         }
 
+        public void DoDirectMethod(int[] vector)
+        {
+            double result = 0;
+            double x = 1.5;
+            for(int i = 0; i < vector.Length; i++)
+            {
+                result += vector[i] * Math.Pow(x, i - 1);
+            }
+        }
+
         public void DoBubbleSort(int[] vector)
         {
             int temp;
