@@ -26,7 +26,6 @@ namespace Lab_Alg_1
             int largest = ind;
             int indLeft = ind * 2 + 1;
             int indRight = ind * 2 + 2;
-            int middleMax = -1;
             if (indLeft < n && vector[indLeft] > vector[largest])
                 largest = indLeft;
             if (indRight < n && vector[indRight] > vector[largest])
