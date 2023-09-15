@@ -14,7 +14,7 @@ namespace Lab_Alg_1
 
         public static void Working()
         {
-            var task = new Task1();
+            var task = new Task3();
             //string[] results = new string[maxN];
             double[] results  = new double[maxN];
 
@@ -28,17 +28,14 @@ namespace Lab_Alg_1
                 {
                     watсh.Start();
                     Random random = new Random();
-                    task.DoConstFunc(CreateVector(n, maxValue));
+                    task.CocktailShakerSort(CreateVector(n, maxValue));
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
                     sumWorks += s;
-                    //Console.Write($"   {s} : {sumWorks} ;");
                 }
-                //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
                 results[n - 1] = (double)(sumWorks) / 5.0;
 
-                //Console.WriteLine($"{n} : {(double)(sumWorks) / 5.0}");
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
