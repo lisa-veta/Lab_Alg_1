@@ -9,12 +9,55 @@ namespace Lab_Alg_1
         static int maxN = 10000;
         public static void Main(string[] args)
         {
-            WorkingWithoutTime();
+            Working();
         }
 
-        public static void Working()
+
+        public static void ChooseAlg()
         {
-            var task = new Task3();
+            while (true)
+            {
+                Console.WriteLine("Выберите алгоритм:" +
+                "\n1)" +
+                "\n2)" +
+                "\n3)" +
+                "\n4)" +
+                "\n5)" +
+                "\n6)" +
+                "\n7)" +
+                "\n8.1)" +
+                "\n8.2)" +
+                "\n8.3)" +
+                "\n8.4)" +
+                "\n9)" +
+                "\n10)" +
+                "\n11)" +
+                "\n12)");
+                string choise = Console.ReadLine();
+                switch (choise)
+                {
+                    case "1":
+                        Working("DoConstFunc");
+                        break;
+                    case "2":
+                        SecondChoise();
+                        break;
+                    case "3":
+                        ThirdChoise();
+                        break;
+                    case "4":
+                        FourthChoise();
+                        break;
+                    default:
+                        Console.WriteLine("\nВыберите действие из предложенных\n");
+                        break;
+                }
+            }
+        }
+
+        public static void Working(st)
+        {
+            var task = new Task1();
             //string[] results = new string[maxN];
             double[] results  = new double[maxN];
 
@@ -30,11 +73,10 @@ namespace Lab_Alg_1
                     Random random = new Random();
                     task.DoConstFunc(CreateVector(n, maxValue));
                     watсh.Stop();
-                    double s = (double)watсh.Elapsed.Milliseconds;
+                    double s = (double)watсh.Elapsed.TotalSeconds;
+                    Console.WriteLine($"n = {n} : {s.ToString("F8")}");
                     sumWorks += s;
-                    //Console.Write($"   {s} : {sumWorks} ;");
                 }
-                //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
                 results[n - 1] = (double)(sumWorks) / 5.0;
 
                 Console.WriteLine($"{n} : {(double)(sumWorks) / 5.0}");
