@@ -5,15 +5,17 @@ namespace Lab_Alg_1
 {
     public class Program
     { 
-        static int maxValue = 3;
-        static int maxN = 2;
+        static int maxValue = 5000;
+        static int maxN = 2000;
         public static void Main(string[] args)
         {
             Working();
         }
 
-        public static void Working()
+
+        public static void Working(st)
         {
+
             var task = new Task1();
             //string[] results = new string[maxN];
             double[] results  = new double[maxN];
@@ -27,19 +29,48 @@ namespace Lab_Alg_1
                 for (int count = 0; count < 5; count++)
                 {
                     watсh.Start();
+
                     task.DoConstFunc(CreateVector(n, maxValue));
+
+                    Random random = new Random();
+                    task.CocktailShakerSort(CreateVector(n, maxValue));
+
                     watсh.Stop();
-                    double s = (double)watсh.Elapsed.Milliseconds;
+                    double s = (double)watсh.Elapsed.TotalSeconds;
+                    Console.WriteLine($"n = {n} : {s.ToString("F8")}");
                     sumWorks += s;
-                    //Console.Write($"   {s} : {sumWorks} ;");
                 }
-                //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
                 results[n - 1] = (double)(sumWorks) / 5.0;
 
-                Console.WriteLine($"{n} : {(double)(sumWorks)/5.0}");
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
+        }
+
+        public static void WorkingWithoutTime()
+        {
+            var task = new Task1();
+            //double[] results = new double[maxN];
+            List<string> results = new List<string>();
+            for (int n = 1; n <= maxN; n++)
+            {
+                int sumWorks = 0;
+                Random random = new Random();
+                int x = random.Next(1000);
+                int countOfSteps = 0;
+                for (int count = 0; count < 5; count++)
+                {
+                    countOfSteps = task.DoQuickPow(x, n);
+                    sumWorks += countOfSteps;
+                    //Console.Write($"   {s} : {sumWorks} ;");
+                }
+                //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
+                countOfSteps = sumWorks / 5;
+                results.Add($"{x}^{n};{countOfSteps}");
+                Console.WriteLine($"{x}^{n} : {(double)(sumWorks) / 5.0}");
+            }
+            FileProcessing fileProcessing = new FileProcessing();
+            File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", results);
         }
 
         public static int[] CreateVector(int n, int maxValue)
