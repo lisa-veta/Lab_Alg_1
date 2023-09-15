@@ -46,6 +46,49 @@ namespace Lab_Alg_1
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
         }
+        public static void StartTimSort()
+        {
+            Task1 sort = new Task1();
+            var watсh = new Stopwatch();
+            double[] results = new double[maxN];
+            List<string> result = new List<string>();
+            for (int n = 1; n <= maxN; n++)
+            {
+                watсh.Reset();
+                double allTimeWork = 0;
+
+                for (int count = 0; count < 5; count++)
+                {
+                    watсh.Start();
+                    sort.TimSort(CreateVector(n, maxValue));
+                    watсh.Stop();
+                    double time = watсh.Elapsed.TotalSeconds;
+                    allTimeWork += time;
+                }
+
+                results[n - 1] = (allTimeWork) / 5.0;
+                result.Add($"{n.ToString()};{((allTimeWork) / 5.0).ToString("F8")}");
+
+                //Console.WriteLine($"{n} : {((allTimeWork) / 5.0).ToString("F8")}");
+            }
+            File.WriteAllLines("C:\\Users\\polin\\OneDrive\\Desktop\\result1.csv",result);
+        }
+        public static void StartRecursivePow()
+        {
+            Task1 task = new Task1();
+            Random rand = new Random();
+            int num = 15;
+            int stepen = rand.Next(10);
+            List<string> results = new List<string>();
+            for (int i = 2; i <= num; i++)
+            {
+                long steps = 0;
+                steps = task.RecursivePow(i, stepen);
+                results.Add($"{i}^{stepen};{steps}");
+                //Console.WriteLine($"{i}^{stepen} : {steps}");
+            }
+            File.WriteAllLines("C:\\Users\\polin\\OneDrive\\Desktop\\result.csv",results);
+        }
 
         public static void WorkingWithoutTime()
         {
