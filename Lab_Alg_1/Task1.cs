@@ -122,9 +122,9 @@ namespace Lab_Alg_1
 
             do
             {
-                steps += 2;
                 k /= 2;
                 c *= c;
+                steps += 2;
                 if (k % 2 == 1)
                 {
                     steps += 1;
@@ -161,5 +161,7 @@ namespace Lab_Alg_1
 
             return steps;
         }
+
+
     }
 }

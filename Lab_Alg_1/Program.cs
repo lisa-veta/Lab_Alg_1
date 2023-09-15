@@ -5,8 +5,8 @@ namespace Lab_Alg_1
 {
     public class Program
     { 
-        static int maxValue = 3;
-        static int maxN = 10000;
+        static int maxValue = 5000;
+        static int maxN = 2000;
         public static void Main(string[] args)
         {
             Working();
@@ -71,7 +71,7 @@ namespace Lab_Alg_1
                 {
                     watсh.Start();
                     Random random = new Random();
-                    task.DoConstFunc(CreateVector(n, maxValue));
+                    task.CocktailShakerSort(CreateVector(n, maxValue));
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
@@ -79,7 +79,6 @@ namespace Lab_Alg_1
                 }
                 results[n - 1] = (double)(sumWorks) / 5.0;
 
-                Console.WriteLine($"{n} : {(double)(sumWorks) / 5.0}");
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
