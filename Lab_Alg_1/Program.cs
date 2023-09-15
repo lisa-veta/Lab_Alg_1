@@ -14,7 +14,7 @@ namespace Lab_Alg_1
 
         public static void Working()
         {
-            var task = new Task3();
+            var task = new Task1();
             //string[] results = new string[maxN];
             double[] results  = new double[maxN];
 
@@ -27,8 +27,7 @@ namespace Lab_Alg_1
                 for (int count = 0; count < 5; count++)
                 {
                     watсh.Start();
-                    //task.DoConstFunc(CreateVector(n, maxValue));
-                    task.DoHeapSort(new int[5] { 2, 1, 22, 5, 3 });
+                    task.DoConstFunc(CreateVector(n, maxValue));
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.Milliseconds;
                     sumWorks += s;
