@@ -45,7 +45,7 @@ namespace Lab_Alg_1
 
         public void DoCocktailShakerSort(int[] vector)
         {
-            for (var i = 0; i < vector.Length / 2; i++)
+            for (int i = 0; i < vector.Length / 2; i++)
             {
                 bool flag = false;
                 for (int j = i; j < vector.Length - i - 1; j++)
@@ -73,20 +73,20 @@ namespace Lab_Alg_1
             }
         }
         
-        public void DoGnomeSort(int[] array)
+        public void DoGnomeSort(int[] vector)
         {
             int index = 1;
             int nextIndex = index+1;
-            while (index < array.Length)
+            while (index < vector.Length)
             {
-                if (array[index - 1] < array[index])
+                if (vector[index - 1] < vector[index])
                 {
                     index = nextIndex;
                     nextIndex++;
                 }
                 else
                 {
-                    SwapElements(array, index - 1, index);
+                    SwapElements(vector, index - 1, index);
                     index--;
                     if (index == 0)
                     {

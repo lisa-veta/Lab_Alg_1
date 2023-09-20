@@ -5,7 +5,7 @@ namespace Lab_Alg_1
 {
     public class Program
     { 
-        static int maxValue = 5000;
+        static int maxValue = 50;
         static int maxN = 2000;
 
         public delegate void IntsMassivInVoid(int[] vector);
@@ -112,7 +112,7 @@ namespace Lab_Alg_1
                     WorkingForm1(task3.DoCocktailShakerSort);
                     break;
                 case ("10.3"):
-                    //WorkingForm1(task3.DoCocktailShakerSort);
+                    WorkingForm1(task3.DoGnomeSort);
                     break;
                 default:
                     Console.WriteLine("Неизвестная команда");
@@ -181,7 +181,7 @@ namespace Lab_Alg_1
                 {
                     watсh.Start();
                     int[] vector = CreateVector(n, maxValue);
-                    method(vector, 0, vector.Length);
+                    method(vector, 0, vector.Length-1);
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
@@ -206,7 +206,7 @@ namespace Lab_Alg_1
                 for (int count = 0; count < 5; count++)
                 {
                     watсh.Start();
-                    var result = method(n, x);
+                    var result = method(x, n);
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
@@ -231,7 +231,7 @@ namespace Lab_Alg_1
                 for (int count = 0; count < 5; count++)
                 {
                     watсh.Start();
-                    var result = method(n, x);
+                    var result = method(x, n);
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
@@ -268,6 +268,7 @@ namespace Lab_Alg_1
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
         }
 
+
         public static void WorkingWithoutTime1(TwoIntInInt method)
         {
             List<string> results = new List<string>();
@@ -279,7 +280,7 @@ namespace Lab_Alg_1
                 int countOfSteps = 0;
                 for (int count = 0; count < 5; count++)
                 {
-                    countOfSteps =  method(n, x);
+                    countOfSteps =  method(x, n);
                     sumWorks +=  countOfSteps;
                 }
                 //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
@@ -302,7 +303,7 @@ namespace Lab_Alg_1
                 int countOfSteps = 0;
                 for (int count = 0; count < 5; count++)
                 {
-                    countOfSteps = (int) method(n, x);
+                    countOfSteps = (int) method(x, n);
                     sumWorks += countOfSteps;
                 }
                 //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
@@ -333,7 +334,7 @@ namespace Lab_Alg_1
             {
                 for (int j = 0; j < n; j++)
                 {
-                    matrix[i, j] = random.Next(0, maxValue);
+                    matrix[i, j] = random.Next(40, maxValue);
                 }
             }
             return matrix;

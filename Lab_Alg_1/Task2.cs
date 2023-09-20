@@ -11,13 +11,14 @@ namespace Lab_Alg_1
     {
         public int[,] DoMultiplicationMatrix(int[,] matrixA, int[,] matrixB)
         {
-            int[,] matrixResult = new int[matrixA.Length, matrixA.Length];
+            int n = matrixA.GetLength(1);
+            int[,] matrixResult = new int[n, n];
 
-            for (int i = 0; i < matrixA.Length; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < matrixA.Length; j++)
+                for (int j = 0; j < n; j++)
                 {
-                    for (int k = 0; k < matrixA.Length; k++)
+                    for (int k = 0; k < n; k++)
                     {
                         matrixResult[i, j] += matrixA[i, k] * matrixB[k, j];
                     }

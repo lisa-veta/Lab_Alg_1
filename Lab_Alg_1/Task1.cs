@@ -44,9 +44,9 @@ namespace Lab_Alg_1
         {
             double result = 0;
             double x = 1.5;
-            for(int i = 0; i < vector.Length; i++)
+            for(int i = 1; i <= vector.Length; i++)
             {
-                result += vector[i] * Math.Pow(x, i - 1);
+                result += vector[i-1] * Math.Pow(x, i - 1);
             }
         }
 
@@ -81,16 +81,17 @@ namespace Lab_Alg_1
         public int Partition(int[] vector, int startInd, int endInd)
         {
             int pivot = vector[endInd];
-            int position = startInd;
-            for (int i = startInd; i < endInd - 1; i++)
+            int position = startInd - 1;
+            for (int i = startInd; i <= endInd; i++)
             {
-                if (vector[i] <= pivot)
+                if (vector[i] < pivot)
                 {
-                    Swap(vector, i, position);
                     position++;
+                    Swap(vector, i, position);
                 }
 
             }
+            position++;
             vector[endInd] = vector[position];
             vector[position] = pivot;
             return position;
@@ -103,15 +104,15 @@ namespace Lab_Alg_1
             vector[ind2] = box;
         }
 
-        public  void DoTimSort(int[] array)
+        public  void DoTimSort(int[] vector)
         {
-            int n = array.Length;
-            int minRun = FindMinRunLenght(array.Length);
+            int n = vector.Length;
+            int minRun = FindMinRunLength(vector.Length);
             for (int i = 0; i < n; i+=minRun)
             {
                 int leftPart = i;
                 int rightPart = Math.Min((i + minRun - 1), (n - 1));
-                InsertionSort(array,leftPart,rightPart);
+                InsertionSort(vector,leftPart,rightPart);
             }
 
             for (int size= minRun; size < n; size=2*size)
@@ -123,95 +124,97 @@ namespace Lab_Alg_1
 
                     if (middlePart<rightPart)
                     {
-                        MergeSort(array,leftPart,middlePart,rightPart);
+                        MergeSort(vector,leftPart,middlePart,rightPart);
                     }
                 }
             }
         }
 
-        private int FindMinRunLenght (int lenght)
+        private int FindMinRunLength (int length)
         {
             int flag = 0;// будет равно 1, если среди сдвинутых битов есть хотя бы один ненулевой
-            while (lenght >= 64)
+            while (length >= 64)
             {
-                flag = flag | (lenght & 1);
-                lenght = lenght >> 1;
+                flag = flag | (length & 1);
+                length = length >> 1;
             }
-            return lenght + flag;
+            return length + flag;
         }
         
-        private void InsertionSort(int[] array, int leftPart, int rightPart)
+        private void InsertionSort(int[] vector, int leftPart, int rightPart)
         {
             for (int i = leftPart+1; i <= rightPart; i++)
             {
-                int temp = array[i];
+                int temp = vector[i];
                 int k = i - 1;
-                while (k>=leftPart && array[k]>temp)
+                while (k>=leftPart && vector[k]>temp)
                 {
-                    array[k + 1] = array[k];
+                    vector[k + 1] = vector[k];
                     k--;
                 }
-                array[k + 1] = temp;
+                vector[k + 1] = temp;
             }
         }
 
-        private void MergeSort(int[]array,int left, int middle, int right)
+        private void MergeSort(int[]vector,int left, int middle, int right)
         {
-            int lenght1 = middle - left + 1;
-            int lenght2 = right - middle;
-            int[] leftPart = new int[lenght1];
-            int[] rightPart = new int[lenght2];
+            int length1 = middle - left + 1;
+            int length2 = right - middle;
+            int[] leftPart = new int[length1];
+            int[] rightPart = new int[length2];
 
-            for (int x = 0; x < lenght1; x++)
+            for (int x = 0; x < length1; x++)
             {
-                leftPart[x] = array[x + 1];
+                leftPart[x] = vector[x + 1];
             }
 
-            for (int x = 0; x < lenght2; x++)
+            for (int x = 0; x < length2; x++)
             {
-                rightPart[x] = array[middle + 1 + x];
+                rightPart[x] = vector[middle + 1 + x];
             }
 
             int i = 0;
             int j = 0;
             int k = left;
 
-            while (i<lenght1 && j<lenght2)
+            while (i<length1 && j<length2)
             {
                 if (leftPart[i]<=rightPart[j])
                 {
-                    array[k] = leftPart[i];
+                    vector[k] = leftPart[i];
                     i++;
                 }
 
                 else
                 {
-                    array[k] = rightPart[j];
+                    vector[k] = rightPart[j];
                     j++;
                 }
 
                 k++;
             }
 
-            while (i<lenght1)
+            while (i<length1)
             {
-                array[k] = leftPart[i];
+                vector[k] = leftPart[i];
                 k++;
                 i++;
             }
 
-            while (j<lenght2)
+            while (j<length2)
             {
-                array[k] = rightPart[j];
+                vector[k] = rightPart[j];
                 k++;
                 j++;
             }
         }
+
+       
         public int DoSimplePow(int x, int n)
         {
+            int steps = 0;
             int func = 1;
             int k = 0;
-            int steps = 0;
             while (k < n)
             {
                 func *= x;
@@ -221,9 +224,9 @@ namespace Lab_Alg_1
             return steps;
         }
 
+        int steps = 0;
         public long DoRecursivePow(int x, int n)
         {
-            int steps = 0;
             if (n == 0)
             {
                 steps += 1;
@@ -244,17 +247,18 @@ namespace Lab_Alg_1
             return steps;
         }
 
-        public int DoQuickPow(int x, int n)
+        public int DoQuickPow(int c, int k)
         {
             int steps = 0;
-            int c = x;
-            int k = n;
-            int f;
+            int func;
             if (k % 2 == 1)
             {
-                f = c;
+                func = c;
             }
-            f = 1;
+            else
+            {
+                func = 1;
+            }
 
             do
             {
@@ -264,7 +268,7 @@ namespace Lab_Alg_1
                 if (k % 2 == 1)
                 {
                     steps += 1;
-                    f *= c;
+                    func *= c;
                 }
             }
             while (k != 0);
@@ -272,12 +276,10 @@ namespace Lab_Alg_1
             return steps;
         }
 
-        public int DoClassicQuickPow(int x, int n)
+        public int DoClassicQuickPow(int c, int k)
         {
             int steps = 0;
-            int c = x;
-            int k = n;
-            int f = 1;
+            int func = 1;
 
             while (k != 0)
             {
@@ -290,7 +292,7 @@ namespace Lab_Alg_1
                 else
                 {
                     steps += 2;
-                    f *= c;
+                    func *= c;
                     k -= 1;
                 }
             }
