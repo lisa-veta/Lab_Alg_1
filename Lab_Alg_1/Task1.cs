@@ -224,27 +224,27 @@ namespace Lab_Alg_1
             return steps;
         }
 
-        int steps = 0;
+        public int Steps = 0;
         public long DoRecursivePow(int x, int n)
         {
             if (n == 0)
             {
-                steps += 1;
+                Steps += 1;
                 return 1;
             }
             long func = DoRecursivePow(x, n / 2);
-            steps += 1;
+            Steps += 1;
             if (n%2==1)
             {
                 func*=func * x;
-                steps += 1;
+                Steps += 1;
             }
             if (n%2!=1)
             {
                 func *= func;
-                steps += 1;
+                Steps += 1;
             }
-            return steps;
+            return func;
         }
 
         public int DoQuickPow(int c, int k)

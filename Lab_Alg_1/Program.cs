@@ -12,7 +12,6 @@ namespace Lab_Alg_1
         public delegate double IntsMassivAndIntInDouble(int[] vector, int a);
         public delegate void IntsMassivAndTwoIntInVoid(int[] vector, int a, int b);
         public delegate int TwoIntInInt(int a, int b);
-        public delegate long TwoIntInLong(int a, int b);
         public delegate int[,] TwoMatrixInMatrix(int[,] a, int[,] b);
 
         public static void Main(string[] args)
@@ -85,10 +84,10 @@ namespace Lab_Alg_1
                     WorkingWithoutTime1(task1.DoSimplePow);
                     break;
                 case ("8.2"):
-                    WorkingForm5(task1.DoRecursivePow);
+                    WorkingForm5(task1);
                     break;
                 case ("8.2s"):
-                    WorkingWithoutTime2(task1.DoRecursivePow);
+                    WorkingWithoutTime2(task1);
                     break;
                 case ("8.3"):
                     WorkingForm4(task1.DoQuickPow);
@@ -218,7 +217,7 @@ namespace Lab_Alg_1
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", fileProcessing.GetValues(results));
         }
 
-        public static void WorkingForm5(TwoIntInLong method)
+        public static void WorkingForm5(Task1 task1)
         {
             double[] results = new double[maxN];
             var watсh = new Stopwatch();
@@ -231,7 +230,7 @@ namespace Lab_Alg_1
                 for (int count = 0; count < 5; count++)
                 {
                     watсh.Start();
-                    var result = method(x, n);
+                    var result = task1.DoRecursivePow(x, n);
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
@@ -292,7 +291,7 @@ namespace Lab_Alg_1
             File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", results);
         }
 
-        public static void WorkingWithoutTime2(TwoIntInLong method)
+        public static void WorkingWithoutTime2(Task1 task1)
         {
             List<string> results = new List<string>();
             for (int n = 1; n <= maxN; n++)
@@ -303,7 +302,9 @@ namespace Lab_Alg_1
                 int countOfSteps = 0;
                 for (int count = 0; count < 5; count++)
                 {
-                    countOfSteps = (int) method(x, n);
+                    task1.Steps = 0;
+                    var result = (int) task1.DoRecursivePow(x, n);
+                    countOfSteps = task1.Steps;
                     sumWorks += countOfSteps;
                 }
                 //results[n - 1] = $"{n};{(double)(sumWorks)/5.0}";
@@ -312,7 +313,7 @@ namespace Lab_Alg_1
                 Console.WriteLine($"{x}^{n} : {(double)(sumWorks) / 5.0}");
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines("C:\\Users\\4769003\\OneDrive\\Рабочий стол\\result.csv", results);
+            File.WriteAllLines("C:\\Users\\user\\Desktop\\result.csv", results);
         }
 
         public static int[] CreateVector(int n, int maxValue)
