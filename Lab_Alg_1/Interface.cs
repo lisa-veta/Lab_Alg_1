@@ -26,19 +26,31 @@ namespace Lab_Alg_1
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(values[i]);
             }
+            WritePath();
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        private void WritePath()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Путь сохранения результата : " );
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(ImportantData.Path);
         }
 
         private void ChooseChangeSetting()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("Изменить настройки алгоритма - 1\nПродолжить с текущими настройками - 0");
+            Console.WriteLine("Изменить настройки алгоритма - 1\nИзменить путь сохранения результата - 2\nПродолжить с текущими настройками - 0");
             Console.ForegroundColor = ConsoleColor.White;
             string? answer = Console.ReadLine();
             switch (answer)
             {
                 case ("1"):
                     ChangeSetting();
+                    break;
+                case ("2"):
+                    ChangePath(); 
                     break;
                 case ("0"):
                     return;
@@ -72,6 +84,24 @@ namespace Lab_Alg_1
             if(!CheckError.Check)
             {
                 ChangeSetting();
+            }
+        }
+
+        private void ChangePath()
+        {
+            Console.Clear();
+            Console.WriteLine(TextInterface.Heaps["path"]);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("Путь сохранения результата :");
+            Console.ForegroundColor = ConsoleColor.Green;
+            string? answer = Console.ReadLine();
+            CheckError.IsRightPath(answer);
+            if (CheckError.Check)
+                ImportantData.Path = answer;
+            else
+            {
+                Thread.Sleep(500);
+                ChangePath();
             }
         }
 

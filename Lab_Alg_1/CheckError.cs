@@ -43,5 +43,22 @@ namespace Lab_Alg_1
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
+
+        public static void IsRightPath(string path)
+        {
+            try
+            {
+                File.WriteAllText(path + "\\text.txt", "lol");
+                File.Delete(path + "\\text.txt");
+                Check = true;
+            }
+            catch 
+            {
+                Check = false;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Неизвестный путь.");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
     }
 }

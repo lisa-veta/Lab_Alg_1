@@ -35,64 +35,64 @@ namespace Lab_Alg_1
             switch (resultIn)
             {
                 case ("1"):
-                    WorkingForm1(task1.DoConstFunc, "ConstFunc");
+                    WorkingForm1(task1.DoConstFunc, "\\ConstFunc");
                     break;
                 case ("2"):
-                    WorkingForm1(task1.DoSumFunc, "SumFunc");
+                    WorkingForm1(task1.DoSumFunc, "\\SumFunc");
                     break;
                 case ("3"):
-                    WorkingForm1(task1.DoMultiplicationFunc, "MultiFunc");
+                    WorkingForm1(task1.DoMultiplicationFunc, "\\MultiFunc");
                     break;
                 case ("4.1"):
-                    WorkingForm2(task1.DoMethodGornera, "MethodGornera");
+                    WorkingForm2(task1.DoMethodGornera, "\\MethodGornera");
                     break;
                 case ("4.2"):
-                    WorkingForm1(task1.DoDirectMethod, "DirectMethod");
+                    WorkingForm1(task1.DoDirectMethod, "\\DirectMethod");
                     break;
                 case ("5"):
-                    WorkingForm1(task1.DoBubbleSort, "BubbleSort");
+                    WorkingForm1(task1.DoBubbleSort, "\\BubbleSort");
                     break;
                 case ("6"):
-                    WorkingForm3(task1.DoQuickSort, "QuickSort");
+                    WorkingForm3(task1.DoQuickSort, "\\QuickSort");
                     break;
                 case ("7"):
-                    WorkingForm1(task1.DoTimSort, "TimSort");
+                    WorkingForm1(task1.DoTimSort, "\\TimSort");
                     break;
                 case ("8.1"):
-                    WorkingForm4(task1.DoSimplePow, "SimplePow");
+                    WorkingForm4(task1.DoSimplePow, "\\SimplePow");
                     break;
                 case ("8.1s"):
-                    WorkingWithoutTime1(task1.DoSimplePow, "SimplePowSteps");
+                    WorkingWithoutTime1(task1.DoSimplePow, "\\SimplePowSteps");
                     break;
                 case ("8.2"):
-                    WorkingForm5(task1, "RecursivePow");
+                    WorkingForm5(task1, "\\RecursivePow");
                     break;
                 case ("8.2s"):
-                    WorkingWithoutTime2(task1, "RecursivePowSteps");
+                    WorkingWithoutTime2(task1, "\\RecursivePowSteps");
                     break;
                 case ("8.3"):
-                    WorkingForm4(task1.DoQuickPow, "QuickPow");
+                    WorkingForm4(task1.DoQuickPow, "\\QuickPow");
                     break;
                 case ("8.3s"):
-                    WorkingWithoutTime1(task1.DoQuickPow, "QuickPowSteps");
+                    WorkingWithoutTime1(task1.DoQuickPow, "\\QuickPowSteps");
                     break;
                 case ("8.4"):
-                    WorkingForm4(task1.DoClassicQuickPow, "ClassicQuickPow");
+                    WorkingForm4(task1.DoClassicQuickPow, "\\ClassicQuickPow");
                     break;
                 case ("8.4s"):
-                    WorkingWithoutTime1(task1.DoClassicQuickPow, "ClassicQuickPowSteps");
+                    WorkingWithoutTime1(task1.DoClassicQuickPow, "\\ClassicQuickPowSteps");
                     break;
                 case ("9"):
-                    WorkingForm6(task2.DoMultiplicationMatrix, "MultiplicationMatrix");
+                    WorkingForm6(task2.DoMultiplicationMatrix, "\\MultiplicationMatrix");
                     break;
                 case ("10.1"):
-                    WorkingForm1(task3.DoHeapSort, "HeapSort");
+                    WorkingForm1(task3.DoHeapSort, "\\HeapSort");
                     break;
                 case ("10.2"):
-                    WorkingForm1(task3.DoCocktailShakerSort, "CocktailShakerSort");
+                    WorkingForm1(task3.DoCocktailShakerSort, "\\CocktailShakerSort");
                     break;
                 case ("10.3"):
-                    WorkingForm1(task3.DoGnomeSort, "GnomeSort");
+                    WorkingForm1(task3.DoGnomeSort, "\\GnomeSort");
                     break;
                 default:
                     Console.WriteLine("Неизвестная команда");
