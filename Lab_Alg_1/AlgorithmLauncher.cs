@@ -19,7 +19,8 @@ namespace Lab_Alg_1
         static int maxValue;
         static int minValue;
         static int maxN;
-        
+        static int[] array;
+
         public AlgorithmLauncher()
         {
             maxValue = ImportantData.MaxValue;
@@ -32,6 +33,7 @@ namespace Lab_Alg_1
             Task1 task1 = new Task1();
             Task2 task2 = new Task2();
             Task3 task3 = new Task3();
+            CreateArray();
             switch (resultIn)
             {
                 case ("1"):
@@ -111,8 +113,9 @@ namespace Lab_Alg_1
 
                 for (int count = 0; count < 5; count++)
                 {
+                    int[] vector = CreateVector(n);
                     watсh.Start();
-                    method(CreateVector(n));
+                    method(vector);
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
@@ -135,8 +138,9 @@ namespace Lab_Alg_1
 
                 for (int count = 0; count < 5; count++)
                 {
+                    int[] vector = CreateVector(n);
                     watсh.Start();
-                    var result = method(CreateVector(n), 0);
+                    var result = method(vector, 0);
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
                     Console.WriteLine($"n = {n} : {s.ToString("F8")}");
@@ -159,8 +163,8 @@ namespace Lab_Alg_1
 
                 for (int count = 0; count < 5; count++)
                 {
-                    watсh.Start();
                     int[] vector = CreateVector(n);
+                    watсh.Start();
                     method(vector, 0, vector.Length - 1);
                     watсh.Stop();
                     double s = (double)watсh.Elapsed.TotalSeconds;
@@ -297,15 +301,36 @@ namespace Lab_Alg_1
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", results);
         }
 
-        public static int[] CreateVector(int n)
+        //public static int[] CreateVector(int n)
+        //{
+        //    int[] array = new int[n];
+        //    var random = new Random();
+        //    for (int i = 0; i < n; i++)
+        //    {
+        //        array[i] = random.Next(minValue, maxValue);
+        //    }
+        //    return array;
+        //}
+
+        public static int[] CreateArray()
         {
-            int[] array = new int[n];
+            array = new int[maxN];
             var random = new Random();
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < maxN; i++)
             {
                 array[i] = random.Next(minValue, maxValue);
             }
             return array;
+        }
+
+        public static int[] CreateVector(int n)
+        {
+            int[] newArray = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                newArray[i] = array[i];
+            }
+            return newArray;
         }
 
         public static int[,] CreateMatrix(int n)
