@@ -8,7 +8,7 @@ namespace Lab_Alg_1
 {
     public class Interface
     {
-        int[] values = new int[] { ImportantData.MinValue, ImportantData.MaxValue, ImportantData.MaxN };
+        int[] values = new int[] { ImportantData.MinValue, ImportantData.MaxValue, ImportantData.MaxN, ImportantData.Step };
         public void Work()
         {
             WriteSetting();
@@ -112,6 +112,7 @@ namespace Lab_Alg_1
             ImportantData.MinValue = values[0];
             ImportantData.MaxValue = values[1];
             ImportantData.MaxN = values[2];
+            ImportantData.Step = values[3];
         }
 
         private void WriteStartAlgorithm()

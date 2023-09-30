@@ -20,12 +20,14 @@ namespace Lab_Alg_1
         static int minValue;
         static int maxN;
         static int[] array;
+        static int step;
 
         public AlgorithmLauncher()
         {
             maxValue = ImportantData.MaxValue;
             minValue = ImportantData.MinValue;
             maxN = ImportantData.MaxN;
+            step = ImportantData.Step;
         }
 
         public void Start(string resultIn)
@@ -124,7 +126,7 @@ namespace Lab_Alg_1
                 results[n - 1] = (double)(sumWorks) / 5.0;
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results));
+            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
         }
 
         public static void WorkingForm2(IntsMassivAndIntInDouble method, string nameFile)
@@ -149,7 +151,7 @@ namespace Lab_Alg_1
                 results[n - 1] = (double)(sumWorks) / 5.0;
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results));
+            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
         }
 
         public static void WorkingForm3(IntsMassivAndTwoIntInVoid method, string nameFile)
@@ -174,7 +176,7 @@ namespace Lab_Alg_1
                 results[n - 1] = (double)(sumWorks) / 5.0;
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results));
+            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
         }
 
         public static void WorkingForm4(TwoIntInInt method, string nameFile)
@@ -199,7 +201,7 @@ namespace Lab_Alg_1
                 results[n - 1] = (double)(sumWorks) / 5.0;
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results));
+            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
         }
 
         public static void WorkingForm5(Task1 task1, string nameFile)
@@ -224,7 +226,7 @@ namespace Lab_Alg_1
                 results[n - 1] = (double)(sumWorks) / 5.0;
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results));
+            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
         }
 
         public static void WorkingForm6(TwoMatrixInMatrix method, string nameFile)
@@ -249,7 +251,7 @@ namespace Lab_Alg_1
                 results[n - 1] = (double)(sumWorks) / 5.0;
             }
             FileProcessing fileProcessing = new FileProcessing();
-            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results));
+            File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
         }
 
 

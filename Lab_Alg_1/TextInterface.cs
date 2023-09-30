@@ -8,7 +8,7 @@ namespace Lab_Alg_1
 {
     public static class TextInterface
     {
-        static string[] textSetting = new string[] {"Минимальное значение элемента в массиве данных : ", "Максимальное значение элемента в массиве данных : ", "Максимальная длинна массива данных : " };
+        static string[] textSetting = new string[] {"Минимальное значение элемента в массиве данных : ", "Максимальное значение элемента в массиве данных : ", "Максимальная длинна массива данных : ", "Шаг даных в итоговом отчете : " };
         static Dictionary<string, string> heaps = new Dictionary<string, string>() { { "setting", "- Настройки работы алгоритмов -" }, { "algorithm", "- Алгоритмы -" }, { "path", "- Настройка пути сохранения результата -" } };
         static string listAlgorithms = "1 Постоянная функция\n" +
                 "2 Сумма элементов\n" +

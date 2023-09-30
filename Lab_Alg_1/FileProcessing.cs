@@ -8,13 +8,13 @@ namespace Lab_Alg_1
 {
     public class FileProcessing
     {
-        public List<string> GetValues(double[] results)
+        public List<string> GetValues(double[] results, int step)
         {
             List<string> newResilt = new List<string>();
             newResilt.Add($"{1};{results[0]}");
             for (int i = 1; i < results.Length-1; i++)
             {
-                if ((results[i] != results[i + 1] || results[i] != results[i - 1]))
+                if ((results[i] != results[i + 1] || results[i] != results[i - 1]) && i % step == 0)
                 {
                     newResilt.Add($"{i + 1};{results[i]}");
                 }
