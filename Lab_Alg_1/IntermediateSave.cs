@@ -13,7 +13,7 @@ namespace Lab_Alg_1
             FileProcessing processing = new FileProcessing();
             if(i % 500 == 0)
             {
-                File.WriteAllLines(ImportantData.Path + nameFile + i + ".csv", processing.GetValues(results, step));
+                File.WriteAllLines(ImportantData.Path + nameFile + ".csv", processing.GetValues(results, step));
             }
         }
         public void ExtraSaving(int i, List<string> results, string nameFile)

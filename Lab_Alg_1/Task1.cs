@@ -165,7 +165,7 @@ namespace Lab_Alg_1
 
             for (int x = 0; x < length1; x++)
             {
-                leftPart[x] = vector[x + 1];
+                leftPart[x] = vector[x + left];
             }
 
             for (int x = 0; x < length2; x++)
