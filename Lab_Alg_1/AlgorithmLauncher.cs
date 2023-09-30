@@ -124,6 +124,8 @@ namespace Lab_Alg_1
                     sumWorks += s;
                 }
                 results[n - 1] = (double)(sumWorks) / 5.0;
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile, step);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
@@ -149,6 +151,8 @@ namespace Lab_Alg_1
                     sumWorks += s;
                 }
                 results[n - 1] = (double)(sumWorks) / 5.0;
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile, step);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
@@ -174,6 +178,8 @@ namespace Lab_Alg_1
                     sumWorks += s;
                 }
                 results[n - 1] = (double)(sumWorks) / 5.0;
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile, step);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
@@ -199,6 +205,8 @@ namespace Lab_Alg_1
                     sumWorks += s;
                 }
                 results[n - 1] = (double)(sumWorks) / 5.0;
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile, step);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
@@ -224,6 +232,8 @@ namespace Lab_Alg_1
                     sumWorks += s;
                 }
                 results[n - 1] = (double)(sumWorks) / 5.0;
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile, step);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
@@ -249,6 +259,8 @@ namespace Lab_Alg_1
                     sumWorks += s;
                 }
                 results[n - 1] = (double)(sumWorks) / 5.0;
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile, step);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
@@ -273,6 +285,8 @@ namespace Lab_Alg_1
                 countOfSteps = sumWorks / 5;
                 results.Add($"{x}^{n};{countOfSteps}");
                 Console.WriteLine($"{x}^{n} : {(double)(sumWorks) / 5.0}");
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", results);
@@ -298,6 +312,8 @@ namespace Lab_Alg_1
                 countOfSteps = sumWorks / 5;
                 results.Add($"{x}^{n};{countOfSteps}");
                 Console.WriteLine($"{x}^{n} : {(double)(sumWorks) / 5.0}");
+                IntermediateSave interSave = new IntermediateSave();
+                interSave.ExtraSaving(n, results, nameFile);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", results);
