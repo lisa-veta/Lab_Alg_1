@@ -11,6 +11,7 @@ namespace Lab_Alg_1
         public static int MinValue = 10;
         public static int MaxValue = 20;
         public static int MaxN = 10;
+        public static int Step;
 
         public static string Path = "D:";
     }

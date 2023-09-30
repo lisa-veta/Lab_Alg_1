@@ -85,6 +85,7 @@ namespace Lab_Alg_1
             {
                 ChangeSetting();
             }
+            ChooseChangeSetting();
         }
 
         private void ChangePath()
@@ -103,6 +104,7 @@ namespace Lab_Alg_1
                 Thread.Sleep(500);
                 ChangePath();
             }
+            ChooseChangeSetting();
         }
 
         private void RewriteImportantData()
