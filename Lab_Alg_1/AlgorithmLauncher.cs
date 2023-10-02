@@ -62,28 +62,28 @@ namespace Lab_Alg_1
                 case ("7"):
                     WorkingForm1(task1.DoTimSort, "\\TimSort");
                     break;
+                //case ("8.1"):
+                //    WorkingForm4(task1.DoSimplePow, "\\SimplePow");
+                //    break;
                 case ("8.1"):
-                    WorkingForm4(task1.DoSimplePow, "\\SimplePow");
-                    break;
-                case ("8.1s"):
                     WorkingWithoutTime1(task1.DoSimplePow, "\\SimplePowSteps");
                     break;
+                //case ("8.2"):
+                //    WorkingForm5(task1, "\\RecursivePow");
+                //    break;
                 case ("8.2"):
-                    WorkingForm5(task1, "\\RecursivePow");
-                    break;
-                case ("8.2s"):
                     WorkingWithoutTime2(task1, "\\RecursivePowSteps");
                     break;
+                //case ("8.3"):
+                //    WorkingForm4(task1.DoQuickPow, "\\QuickPow");
+                //    break;
                 case ("8.3"):
-                    WorkingForm4(task1.DoQuickPow, "\\QuickPow");
-                    break;
-                case ("8.3s"):
                     WorkingWithoutTime1(task1.DoQuickPow, "\\QuickPowSteps");
                     break;
+                //case ("8.4"):
+                //    WorkingForm4(task1.DoClassicQuickPow, "\\ClassicQuickPow");
+                //    break;
                 case ("8.4"):
-                    WorkingForm4(task1.DoClassicQuickPow, "\\ClassicQuickPow");
-                    break;
-                case ("8.4s"):
                     WorkingWithoutTime1(task1.DoClassicQuickPow, "\\ClassicQuickPowSteps");
                     break;
                 case ("9"):
@@ -270,11 +270,13 @@ namespace Lab_Alg_1
         public static void WorkingWithoutTime1(TwoIntInInt method, string nameFile)
         {
             List<string> results = new List<string>();
-            for (int n = 1; n <= maxN; n++)
+            Random random = new Random();
+            int x = 1;
+            for (int n = 1; n <= maxN;)
             {
                 int sumWorks = 0;
-                Random random = new Random();
-                int x = random.Next(1000);
+                
+                x += random.Next(100);
                 int countOfSteps = 0;
                 for (int count = 0; count < 5; count++)
                 {
@@ -287,6 +289,7 @@ namespace Lab_Alg_1
                 Console.WriteLine($"{x}^{n} : {(double)(sumWorks) / 5.0}");
                 IntermediateSave interSave = new IntermediateSave();
                 interSave.ExtraSaving(n, results, nameFile);
+                n += random.Next(100);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", results);
@@ -295,11 +298,12 @@ namespace Lab_Alg_1
         public static void WorkingWithoutTime2(Task1 task1, string nameFile)
         {
             List<string> results = new List<string>();
+            int x = 1;
             for (int n = 1; n <= maxN; n++)
             {
                 int sumWorks = 0;
                 Random random = new Random();
-                int x = random.Next(1000);
+                x += random.Next(1000);
                 int countOfSteps = 0;
                 for (int count = 0; count < 5; count++)
                 {
