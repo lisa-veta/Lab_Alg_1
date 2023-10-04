@@ -24,5 +24,14 @@ namespace Lab_Alg_1
                 File.WriteAllLines(ImportantData.Path + nameFile + ".csv", results);
             }
         }
+
+        public void ExtraSaving(int i, double[,] results, string nameFile, int step)
+        {
+            FileProcessing processing = new FileProcessing();
+            if (i % 500 == 0)
+            {
+                File.WriteAllLines(ImportantData.Path + nameFile + ".csv", processing.GetValues(results, step));
+            }
+        }
     }
 }

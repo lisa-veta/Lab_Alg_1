@@ -44,9 +44,9 @@ namespace Lab_Alg_1
         {
             double result = 0;
             double x = 1.5;
-            for(int i = 1; i <= vector.Length; i++)
+            for(int i = 0; i < vector.Length; i++)
             {
-                result += vector[i-1] * Math.Pow(x, i - 1);
+                result += vector[i] * Math.Pow(x, i);
             }
         }
 

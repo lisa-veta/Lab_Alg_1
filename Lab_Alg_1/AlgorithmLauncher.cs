@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using static Lab_Alg_1.Program;
@@ -241,26 +242,33 @@ namespace Lab_Alg_1
 
         public static void WorkingForm6(TwoMatrixInMatrix method, string nameFile)
         {
-            double[] results = new double[maxN];
+            double[,] results = new double[maxN, maxN];
+            CreateMassivForReport(results);
             var watсh = new Stopwatch();
-            for (int n = 1; n <= maxN; n++)
+            int[,] matrix = CreateMatrix(maxN);
+            for (int n = 1; n < maxN; n++)
             {
-                watсh.Reset();
-                double sumWorks = 0;
-                Random random = new Random();
-                int x = random.Next(1000);
-                for (int count = 0; count < 5; count++)
+                for (int m = 1; m < maxN; m++)
                 {
-                    watсh.Start();
-                    var result = method(CreateMatrix(n), CreateMatrix(n));
-                    watсh.Stop();
-                    double s = (double)watсh.Elapsed.TotalSeconds;
-                    Console.WriteLine($"n = {n} : {s.ToString("F8")}");
-                    sumWorks += s;
+                    watсh.Reset();
+                    double sumWorks = 0;
+                    Random random = new Random();
+                    int x = random.Next(1000);
+                    int[,] martixWork = CreateArrayMatrix(matrix, n, m);
+                    int[,] martixWork2 = TranspontMatrix(martixWork);
+                    for (int count = 0; count < 5; count++)
+                    {
+                        watсh.Start();
+                        var result = method(martixWork, martixWork2);
+                        watсh.Stop();
+                        double s = (double)watсh.Elapsed.TotalSeconds;
+                        Console.WriteLine($"n = {n}, m = {m} : {s.ToString("F8")}");
+                        sumWorks += s;
+                    }
+                    results[n, m] = (double)(sumWorks) / 5.0;
+                    IntermediateSave interSave = new IntermediateSave();
+                    interSave.ExtraSaving(n, results, nameFile, step);
                 }
-                results[n - 1] = (double)(sumWorks) / 5.0;
-                IntermediateSave interSave = new IntermediateSave();
-                interSave.ExtraSaving(n, results, nameFile, step);
             }
             FileProcessing fileProcessing = new FileProcessing();
             File.WriteAllLines(ImportantData.Path + nameFile + ".csv", fileProcessing.GetValues(results, step));
@@ -367,6 +375,43 @@ namespace Lab_Alg_1
                 }
             }
             return matrix;
+        }
+
+        public static int[,] CreateArrayMatrix(int[,] maxtrixAll, int n, int m)
+        {
+            int[,] result = new int[n,m];
+            for(int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    result[i, j] = maxtrixAll[i, j];
+                }
+            }
+            return result;
+        }
+
+        public static void CreateMassivForReport(double[,] mass)
+        {
+            mass[0, 0] = 0;
+            for(int i = 1; i < maxN; i++)
+            {
+                mass[0, i] = i;
+                mass[i, 0] = i;
+            }
+        }
+
+
+        public static int[,] TranspontMatrix(int[,] matrix)
+        {
+            int[,] matrixResult = new int[matrix.GetLength(1), matrix.GetLength(0)];
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    matrixResult[j, i] = matrix[i, j];
+                }
+            }
+            return matrixResult;
         }
     }
 }

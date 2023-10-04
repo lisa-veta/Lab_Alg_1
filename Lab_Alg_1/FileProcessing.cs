@@ -23,5 +23,20 @@ namespace Lab_Alg_1
             return newResilt;
         }
 
+        public List<string> GetValues(double[,] results, int step)
+        {
+            List<string> newResilt = new List<string>();
+            for (int i = 0; i < results.GetLength(0); i++)
+            {
+                StringBuilder str = new StringBuilder();
+                for(int j = 0; j < results.GetLength(0); j++)
+                {
+                    str.Append(results[i, j]);
+                    str.Append(';');
+                }
+                newResilt.Add(str.ToString());
+            }
+            return newResilt;
+        }
     }
 }
